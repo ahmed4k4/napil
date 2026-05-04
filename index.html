@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ar" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sherif & Hala - Wedding Invitation</title>
+    <!-- استدعاء خطوط مشابهة للتصميم -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        /* خلفية مشابهة للورق العتيق أو المورد */
+        background-color: #f9f8f4;
+        background-image: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+        font-family: "Playfair Display", serif;
+        color: #333;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+        background: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .header-text {
+        font-family: "Cinzel", serif;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: #4a4a4a;
+      }
+
+      /* --- تصميم الظرف --- */
+      .envelope-section {
+        cursor: pointer;
+        transition: all 0.8s ease-in-out;
+        margin-bottom: 30px;
+      }
+
+      .envelope {
+        width: 80%;
+        height: 180px;
+        background: #f4edd4;
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid #d3c4a1;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .envelope::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 90px solid #ece4c9;
+        border-right: 150px solid transparent;
+        border-left: 150px solid transparent;
+        z-index: 1;
+      }
+
+      .wax-seal {
+        width: 40px;
+        height: 40px;
+        background: #2b2b2b;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        transform: translateY(-50%);
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+      }
+
+      .tap-to-open {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        margin-top: 15px;
+        color: #666;
+      }
+
+      /* --- تفاصيل الدعوة (مخفية في البداية) --- */
+      .invitation-details {
+        display: none;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .couple-names {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5rem;
+        color: #2c2c2c;
+        margin: 20px 0;
+      }
+
+      .separator {
+        width: 60%;
+        height: 1px;
+        background: #c8b57b;
+        margin: 20px auto;
+      }
+
+      .wedding-date-time {
+        font-family: "Cinzel", serif;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      /* --- العداد التنازلي --- */
+      .countdown-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 2rem;
+        margin-top: 40px;
+        color: #4a4a4a;
+      }
+
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+        font-family: "Cinzel", serif;
+        font-size: 1.5rem;
+        border: 2px solid #c8b57b;
+        border-radius: 50px;
+        padding: 15px 20px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .time-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .time-label {
+        font-size: 0.6rem;
+        font-family: Arial, sans-serif;
+        color: #888;
+        letter-spacing: 1px;
+      }
+
+      /* --- الخريطة والنموذج --- */
+      .section-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.2rem;
+        margin: 40px 0 20px;
+        color: #4a4a4a;
+      }
+
+      .map-container {
+        width: 100%;
+        height: 250px;
+        border: 2px solid #c8b57b;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 30px;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      .rsvp-form {
+        border: 2px solid #c8b57b;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.6);
+        margin-bottom: 40px;
+      }
+
+      .rsvp-form input,
+      .rsvp-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "Playfair Display", serif;
+        text-align: center;
+      }
+
+      .rsvp-form button {
+        background: #c8b57b;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        font-family: "Cinzel", serif;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        letter-spacing: 1px;
+        transition: 0.3s;
+      }
+
+      .rsvp-form button:hover {
+        background: #a8945a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-text">
+        <p>COME CELEBRATE WITH US</p>
+      </div>
+
+      <!-- واجهة الظرف -->
+      <div
+        class="envelope-section"
+        id="envelopeSection"
+        onclick="openInvitation()"
+      >
+        <div class="envelope">
+          <div class="wax-seal"></div>
+        </div>
+        <p class="tap-to-open">TAP TO OPEN...</p>
+      </div>
+
+      <!-- تفاصيل الفرح تظهر بعد الضغط -->
+      <div class="invitation-details" id="invitationDetails">
+        <!-- يمكنك إضافة صورة الكرتون هنا -->
+        <!-- <img src="couple.png" alt="Couple" style="width: 150px;"> -->
+
+        <h1 class="couple-names">Sherif & Hala</h1>
+
+        <div class="separator"></div>
+
+        <div class="wedding-date-time">
+          <p>13TH OF APRIL</p>
+          <p>2026</p>
+          <p>AT 6 PM</p>
+          <br />
+          <p>Al Aly Al Azim Mosque, Almaza</p>
+          <p>Open air Hall</p>
+        </div>
+
+        <p
+          style="
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: #555;
+            margin-bottom: 20px;
+          "
+        >
+          WE CAN'T WAIT TO CELEBRATE<br />OUR SPECIAL DAY WITH YOU!
+        </p>
+
+        <div class="separator"></div>
+
+        <!-- العداد التنازلي -->
+        <h2 class="countdown-title">Counting Down to Our Day</h2>
+        <div class="countdown-timer">
+          <div class="time-box">
+            <span id="days">00</span>
+            <span class="time-label">DAYS</span>
+          </div>
+          :
+          <div class="time-box">
+            <span id="hours">00</span>
+            <span class="time-label">HOURS</span>
+          </div>
+          :
+          <div class="time-box">
+            <span id="minutes">00</span>
+            <span class="time-label">MINS</span>
+          </div>
+          :
+          <div class="time-box">
+            <span id="seconds">00</span>
+            <span class="time-label">SECS</span>
+          </div>
+        </div>
+
+        <!-- الخريطة -->
+        <h2 class="section-title">Getting There</h2>
+        <div class="map-container">
+          <!-- كود خريطة جوجل التوضيحي -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.482705007559!2d31.3414963!3d30.0804153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145815e98211b439%3A0xc0fb106b2ef874bd!2z2YXYs9iM2K8g2KfZhNi52YTZiiDYp9mE2LnYuNmK2YU!5e0!3m2!1sen!2seg!4v1714856000000!5m2!1sen!2seg"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <!-- نموذج التهنئة -->
+        <h2 class="section-title">Leave Us a message</h2>
+        <div class="rsvp-form">
+          <form onsubmit="submitForm(event)">
+            <input type="text" placeholder="YOUR NAME" required />
+            <textarea
+              rows="3"
+              placeholder="WRITE YOUR CONGRATULATION"
+              required
+            ></textarea>
+            <button type="submit">RSVP</button>
+          </form>
+          <p
+            id="formMessage"
+            style="
+              display: none;
+              color: green;
+              margin-top: 10px;
+              font-size: 0.9rem;
+            "
+          >
+            RESPONSE SAVED
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 1. حركة فتح الظرف
+      function openInvitation() {
+        document.getElementById("envelopeSection").style.display = "none";
+        document.getElementById("invitationDetails").style.display = "block";
+      }
+
+      // 2. برمجة العداد التنازلي
+      const weddingDate = new Date("April 13, 2026 18:00:00").getTime();
+
+      const timer = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML =
+          days < 10 ? "0" + days : days;
+        document.getElementById("hours").innerHTML =
+          hours < 10 ? "0" + hours : hours;
+        document.getElementById("minutes").innerHTML =
+          minutes < 10 ? "0" + minutes : minutes;
+        document.getElementById("seconds").innerHTML =
+          seconds < 10 ? "0" + seconds : seconds;
+
+        if (distance < 0) {
+          clearInterval(timer);
+          document.querySelector(".countdown-timer").innerHTML =
+            "It's Wedding Day!";
+        }
+      }, 1000);
+
+      // 3. تأكيد إرسال الرسالة (وهمي للتصميم)
+      function submitForm(e) {
+        e.preventDefault();
+        document.getElementById("formMessage").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("formMessage").style.display = "none";
+          e.target.reset();
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
